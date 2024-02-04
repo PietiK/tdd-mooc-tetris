@@ -19,4 +19,8 @@ export class Board {
     }
     return boardstring;
   }
+
+  drop(block) {
+    this.cells[0][1] = block;
+  }
 }
