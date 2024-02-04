@@ -21,12 +21,12 @@ export class Board {
   }
 
   drop(block) {
-    if (this.cells.some(row => row.some(cell => cell !== "."))) {
+    if (this.hasFalling()) {
       throw new Error("already falling");
     }
     this.cells[0][1] = block;
   }
-  
+
   hasFalling() {
     return this.cells.some(row => row.some(cell => cell !== "."));
   }
