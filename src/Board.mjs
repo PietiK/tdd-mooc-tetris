@@ -26,6 +26,11 @@ export class Board {
     }
     this.cells[0][1] = block;
   }
+  
+  hasFalling() {
+    return this.cells.some(row => row.some(cell => cell !== "."));
+  }
+
   tick() {
     const tempArr = this.cells;
     for (let i = this.height - 2; i >= 0; i--) {
