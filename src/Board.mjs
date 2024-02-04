@@ -21,6 +21,9 @@ export class Board {
   }
 
   drop(block) {
+    if (this.cells.some(row => row.some(cell => cell !== "."))) {
+      throw new Error("already falling");
+    }
     this.cells[0][1] = block;
   }
   tick() {
