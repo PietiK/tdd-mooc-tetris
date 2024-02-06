@@ -2,11 +2,13 @@ export class Board {
   width;
   height;
   cells;
+  isMoving;
 
   constructor(width, height) {
     this.width = width;
     this.height = height;
     this.cells = new Array(height).fill(null).map(() => new Array(width).fill("."));
+    this.isMoving = false;
   }
 
   toString() {
@@ -28,19 +30,21 @@ export class Board {
   }
 
   hasFalling() {
-    return this.cells.some(row => row.some(cell => cell !== "."));
+    return this.isMoving || this.cells.some((row) => row.some((cell) => cell !== "."));
   }
 
   tick() {
     let hasMoved = false;
-    this.cells.slice(0, -1).forEach((row, i) => 
+    this.cells.slice(0, -1).forEach((row, i) =>
       row.forEach((cell, j) => {
         if (cell !== "." && !hasMoved) {
+          this.isMoving = true;
           this.cells[i + 1][j] = cell;
           this.cells[i][j] = ".";
           hasMoved = true;
         }
       })
     );
+    if (!hasMoved) this.isMoving = false;
   }
 }
