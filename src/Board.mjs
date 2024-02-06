@@ -38,7 +38,7 @@ export class Board {
     let hasMoved = false;
     this.cells.slice(0, -1).forEach((row, i) =>
       row.forEach((cell, j) => {
-        if (cell !== "." && !hasMoved) {
+        if (cell !== "." && !hasMoved && this.cells[i + 1][j] === ".") {
           this.isMoving = true;
           this.cells[i + 1][j] = cell;
           this.cells[i][j] = ".";
