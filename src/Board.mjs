@@ -32,13 +32,15 @@ export class Board {
   }
 
   tick() {
-    const tempArr = this.cells;
-    for (let i = this.height - 2; i >= 0; i--) {
-      for (let j = 0; j < this.width; j++) {
-        if (tempArr[i][j] !== ".") tempArr[i + 1][j] = tempArr[i][j];
-        tempArr[i][j] = ".";
-      }
-    } 
-    this.cells = tempArr;
+    let hasMoved = false;
+    this.cells.slice(0, -1).forEach((row, i) => 
+      row.forEach((cell, j) => {
+        if (cell !== "." && !hasMoved) {
+          this.cells[i + 1][j] = cell;
+          this.cells[i][j] = ".";
+          hasMoved = true;
+        }
+      })
+    );
   }
 }
