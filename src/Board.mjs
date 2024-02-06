@@ -27,10 +27,11 @@ export class Board {
       throw new Error("already falling");
     }
     this.cells[0][1] = block;
+    this.isMoving = true;
   }
 
   hasFalling() {
-    return this.isMoving || this.cells.some((row) => row.some((cell) => cell !== "."));
+    return this.isMoving;
   }
 
   tick() {
