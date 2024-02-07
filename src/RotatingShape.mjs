@@ -22,7 +22,9 @@ export class RotatingShape {
         const temp = shapearr[i][j];
         shapearr[i][j] = shapearr[j][i];
         shapearr[j][i] = temp;
-      } shapearr[i].reverse();
-    } return shapearr.map((arr) => arr.join("")).join("\n");
+      }
+      shapearr[i].reverse();
+    }
+    return shapearr.map((arr) => arr.join("")).join("\n");
   }
 }
