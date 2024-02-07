@@ -12,7 +12,7 @@ export class RotatingShape {
   shapeToList(str) {
     return str
       .replace(/[ \t\r]+/g, "")
-      .split("\n")
+      .split("\n").filter((row) => row.length > 0)
       .map((row) => row.split(""));
   }
   rotateRight() {
@@ -25,6 +25,14 @@ export class RotatingShape {
       }
       shapearr[i].reverse();
     }
-    return shapearr.map((arr) => arr.join("")).join("\n");
+    return shapearr.map((arr) => arr.join("")).join("\n") + "\n";
+  }
+  rotateLeft() {
+    let shapearr = this.shapeToList(this.toString());
+    for (let i = 0; i < shapearr.length; i++) {
+      for (let j = i; j < shapearr.length; j++) { const temp = shapearr[i][j];
+        shapearr[i][j] = shapearr[j][i]; shapearr[j][i] = temp;
+      }} shapearr.reverse();
+    return shapearr.map((arr) => arr.join("")).join("\n") + "\n";
   }
 }
