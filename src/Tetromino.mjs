@@ -2,7 +2,7 @@ import { RotatingShape } from "./RotatingShape.mjs";
 
 export class Tetromino extends RotatingShape {
   constructor(shape, variant = undefined) {
-    if (variant !== "I") {
+    if (!variant || variant == "T") {
       super(shape);
     } else if (variant === "I") {
       super(shape);
@@ -14,6 +14,10 @@ export class Tetromino extends RotatingShape {
         shape[2] === "."
           ? new Tetromino(`..I..\n..I..\n..I..\n..I..\n.....`, "I")
           : new Tetromino(`.....\n.....\nIIII.\n.....\n.....`, "I");
+    } else if (variant === "O") {
+      super(shape);
+      this.rotateLeft = () => Tetromino.O_SHAPE;
+      this.rotateRight = () => Tetromino.O_SHAPE;
     }
   }
 
