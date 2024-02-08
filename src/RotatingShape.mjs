@@ -26,7 +26,8 @@ export class RotatingShape {
       }
       shapearr[i].reverse();
     }
-    return shapearr.map((arr) => arr.join("")).join("\n") + "\n";
+    const newshape = shapearr.map((arr) => arr.join("")).join("\n");
+    return new RotatingShape(newshape);
   }
   rotateLeft() {
     let shapearr = this.shapeToList(this.toString());
@@ -38,6 +39,7 @@ export class RotatingShape {
       }
     }
     shapearr.reverse();
-    return shapearr.map((arr) => arr.join("")).join("\n") + "\n";
+    const newshape = shapearr.map((arr) => arr.join("")).join("\n");
+    return new RotatingShape(newshape);
   }
 }
