@@ -6,7 +6,10 @@ export class Tetromino extends RotatingShape {
       super(shape);
     } else if (variant === "I") {
       super(shape);
-      this.rotateLeft = () => (shape[2] === "." ? new Tetromino(`..I..\n..I..\n..I..\n..I..\n.....`, "I") : new Tetromino(`....\n....\nIIII\n....\n.....`, "I"));
+      this.rotateLeft = () =>
+        shape[2] === "."
+          ? new Tetromino(`..I..\n..I..\n..I..\n..I..\n.....`, "I")
+          : new Tetromino(`....\n....\nIIII\n....\n.....`, "I");
     }
   }
 
@@ -14,7 +17,8 @@ export class Tetromino extends RotatingShape {
     return new Tetromino(
       `.T.
        TTT
-       ...`,"T"
+       ...`,
+      "T"
     );
   }
 
@@ -24,7 +28,8 @@ export class Tetromino extends RotatingShape {
        .....
        IIII.
        .....
-       .....`,"I"
+       .....`,
+      "I"
     );
   }
 }
