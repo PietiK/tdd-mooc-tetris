@@ -79,7 +79,7 @@ describe("The I shape", () => {
     );
   });
 
-  test.skip("has 2 distinct orientations", () => {
+  test("has 2 distinct orientations", () => {
     expect(distinctOrientations(shape).size).to.equal(2);
   });
 });
