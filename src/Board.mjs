@@ -3,12 +3,14 @@ export class Board {
   height;
   cells;
   isMoving;
+  middle;
 
   constructor(width, height) {
     this.width = width;
     this.height = height;
     this.cells = new Array(height).fill(null).map(() => new Array(width).fill("."));
     this.isMoving = false;
+    this.middle = Math.floor(width / 2);
   }
 
   toString() {
@@ -26,7 +28,7 @@ export class Board {
     if (this.hasFalling()) {
       throw new Error("already falling");
     }
-    this.cells[0][1] = block;
+    this.cells[0][this.middle] = block;
     this.isMoving = true;
   }
 
