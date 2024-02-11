@@ -31,11 +31,11 @@ export class Board {
     const blockHeight = block.height;
     const blockWidth = block.width;
     this.isMoving = true;
-    if(!blockHeight || !blockWidth) {
+    if (!blockHeight || !blockWidth) {
       this.cells[0][this.middle] = block;
       return;
     }
-    for (let i = 0; i < blockHeight; i++) { 
+    for (let i = 0; i < blockHeight; i++) {
       for (let j = 0; j < blockWidth; j++) {
         this.cells[i][this.middle + j - Math.ceil(blockWidth / 2)] = block.shape[i][j];
       }

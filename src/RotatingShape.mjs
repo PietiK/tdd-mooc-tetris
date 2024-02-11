@@ -6,7 +6,9 @@ export class RotatingShape {
   }
 
   toString() {
-    return typeof this.shape === "string" ?  this.shape.replace(/[ \t\r]+/g, "") + "\n" :  this.shape.map(row => row.join('')).join('\n') + '\n';
+    return typeof this.shape === "string"
+      ? this.shape.replace(/[ \t\r]+/g, "") + "\n"
+      : this.shape.map((row) => row.join("")).join("\n") + "\n";
   }
 
   shapeToList(str) {
