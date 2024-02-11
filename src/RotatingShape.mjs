@@ -2,11 +2,11 @@ export class RotatingShape {
   shape;
 
   constructor(shape) {
-    this.shape = shape;
+    this.shape = typeof shape === "string" ? this.shapeToList(shape) : shape;
   }
 
   toString() {
-    return this.shape.replace(/[ \t\r]+/g, "") + "\n";
+    return typeof this.shape === "string" ?  this.shape.replace(/[ \t\r]+/g, "") + "\n" :  this.shape.map(row => row.join('')).join('\n') + '\n';
   }
 
   shapeToList(str) {
