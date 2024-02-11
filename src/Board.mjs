@@ -4,6 +4,7 @@ export class Board {
   cells;
   isMoving;
   middle;
+  blocks;
 
   constructor(width, height) {
     this.width = width;
@@ -11,6 +12,7 @@ export class Board {
     this.cells = new Array(height).fill(null).map(() => new Array(width).fill("."));
     this.isMoving = false;
     this.middle = Math.floor(width / 2);
+    this.blocks = [];
   }
 
   toString() {
@@ -31,6 +33,8 @@ export class Board {
     const blockHeight = block.height;
     const blockWidth = block.width;
     this.isMoving = true;
+    this.blocks.push(block);
+    if (typeof block !== "string") block.moving = true;
     if (!blockHeight || !blockWidth) {
       this.cells[0][this.middle] = block;
       return;
@@ -43,7 +47,7 @@ export class Board {
   }
 
   hasFalling() {
-    return this.isMoving;
+    return this.isMoving || this.blocks.some((block) => block.moving);
   }
 
   tick() {

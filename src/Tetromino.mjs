@@ -1,7 +1,9 @@
 import { RotatingShape } from "./RotatingShape.mjs";
 
 export class Tetromino extends RotatingShape {
-  width; height;
+  width;
+  height;
+  moving;
   constructor(shape, variant = undefined) {
     if (!variant || variant == "T") {
       super(shape);
@@ -26,6 +28,7 @@ export class Tetromino extends RotatingShape {
       this.rotateLeft = () => Tetromino.O_SHAPE;
       this.rotateRight = () => Tetromino.O_SHAPE;
     }
+    this.moving = false;
   }
 
   static get T_SHAPE() {
