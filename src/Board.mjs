@@ -35,8 +35,9 @@ export class Board {
       this.cells[0][this.middle] = block;
       return;
     }
-    for (let i = 0; i < blockHeight; i++) { for (let j = 0; j < blockWidth; j++) {
-        this.cells[i][this.middle + j - Math.floor(blockWidth / 2)] = block[i][j];
+    for (let i = 0; i < blockHeight; i++) { 
+      for (let j = 0; j < blockWidth; j++) {
+        this.cells[i][this.middle + j - Math.ceil(blockWidth / 2)] = block.shape[i][j];
       }
     }
   }
