@@ -28,8 +28,17 @@ export class Board {
     if (this.hasFalling()) {
       throw new Error("already falling");
     }
-    this.cells[0][this.middle] = block;
+    const blockHeight = block.height;
+    const blockWidth = block.width;
     this.isMoving = true;
+    if(!blockHeight || !blockWidth) {
+      this.cells[0][this.middle] = block;
+      return;
+    }
+    for (let i = 0; i < blockHeight; i++) { for (let j = 0; j < blockWidth; j++) {
+        this.cells[i][this.middle + j - Math.floor(blockWidth / 2)] = block[i][j];
+      }
+    }
   }
 
   hasFalling() {
