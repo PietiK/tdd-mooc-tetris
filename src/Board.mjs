@@ -33,8 +33,10 @@ export class Board {
     const blockHeight = block.height;
     const blockWidth = block.width;
     this.isMoving = true;
-    this.blocks.push(block);
-    if (typeof block !== "string") block.moving = true;
+    if (typeof block !== "string") {
+      block.moving = true;
+      this.blocks.push(block);
+    }
     if (!blockHeight || !blockWidth) {
       this.cells[0][this.middle] = block;
       return;
@@ -54,7 +56,7 @@ export class Board {
     let hasMoved = false;
     this.cells.slice(0, -1).forEach((row, i) =>
       row.forEach((cell, j) => {
-        if (cell !== "." && !hasMoved && this.cells[i + 1][j] === ".") {
+        if (cell !== "." && (!hasMoved || this.blocks.some((block) => block.moving)) && this.cells[i + 1][j] === ".") {
           this.isMoving = true;
           this.cells[i + 1][j] = cell;
           this.cells[i][j] = ".";
